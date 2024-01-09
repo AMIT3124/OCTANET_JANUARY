@@ -1,0 +1,167 @@
+.pos{
+    width: 100%;
+}
+.headerNav{
+    display: flex;
+   justify-content:center;
+   
+}
+.navbar-brand{
+    color: rgb(214, 17, 17);
+    font-size:x-large;
+}
+/* #navbarNav a:hover{
+    margin: 5px;
+    background-color: brown;
+    color: white;
+    padding: 5px;
+} */
+#img{
+    background-image: url(./Books.jpeg.webp);
+    height: 500px;
+    width: auto;
+}
+.about{
+    color: beige;
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.buyButton{
+    background-color: bisque;
+    border: none;
+    font-size: larger;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;
+}
+.buyButton:hover{
+    background-color: rgb(224, 57, 57);
+    color: bisque;
+   
+}
+.services{
+    width: 100%;
+}
+.services img{
+    height: 60px;
+    width: 60px;
+}
+
+.services p {
+    display: inline-block;
+}
+.services div{
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+#newArrivals,#bestseller,#purchase,#login,#register h4{
+    margin-bottom: 0;
+   text-align: center;
+   
+}
+.underline{
+    margin: auto;
+    width: 80px;
+    border: 2px solid orangered;
+ }
+ .newentry{
+    margin-top: 30px;
+    margin-left: 20px;
+    
+    width: 300px;
+    height: 350px;
+    text-align: center;
+   
+ }
+
+
+ #entry{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+ }
+ .newentry img{
+    width: 250px;
+    height: 250px;
+    transition: all  ;
+ }
+
+ .newentry img:hover{
+    width: 255px;
+    height: 255px;
+ }
+ .newentry div ,a{
+    display: block;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    
+ }
+.bestsellerSection{
+  
+    background-image: url(https://wordsrated.com/wp-content/uploads/2022/02/Number-of-Books-Published-Per-Year.jpg);
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  
+    width: 100%vw;
+    height:500px;
+}
+.bestsellerSection div img{
+   
+    width: 90%;
+    height: 450px;
+    margin: 10px;
+}
+.purchase{
+   margin-top: 10px;
+    display: inline-flex;
+    background-color:rgb(240, 103, 54);
+    color: bisque;
+    height: 100px;
+    width: 100%;
+  
+}
+.purchase p{
+    text-align: center;
+    font-size: x-large;
+}
+.purchase button{
+    margin: auto;
+    border: none;
+    
+    padding: 10px;
+    border-radius: 2px;
+}
+.butn:hover{
+    background-color: black;
+    
+    color: bisque;
+}
+.login{
+    margin: auto;
+    width: 60%;
+}
+#registerForm{
+    display: none;
+    margin: auto;
+    width: 60%;
+}
+#regButton{
+    border: none;
+}
+#regButton:hover{
+    background-color:rgb(230, 98, 50);
+    border: none;
+    color: bisque;
+}
+.lf{
+    display: inline;
+}
+.footer {
+    display: flex;
+    justify-content: end;
+    background-color:rgb(240, 230, 226);
+
+    width: 96%;
+    height:fit-content;
+}
