@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+
+    <!--Style-->
+
+    <style>
+        .mainContainer {
+            margin: auto;
+            padding: 10px;
+            width: 80vw;
+            height: auto;
+            background-color: beige;
+        }
+
+        header {
+            text-align: center;
+
+        }
+
+        h1 {
+            color: red;
+
+
+        }
+
+        span {
+            color: black;
+            font-weight: bold;
+
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 10px;
+
+
+        }
+
+        #todoDate {
+            width: 100%;
+            height: 32px;
+        }
+
+        #todoInput {
+            width: 100%;
+            height: 30px;
+        }
+
+        #todoAdd {
+            width: 80px;
+            height: 35px;
+            background-color: rgb(108, 133, 179);
+            color: rgb(245, 239, 239);
+            font-size: larger;
+            border: none;
+
+            border-radius: 2px;
+        }
+
+        .deleteButton {
+            width: 80px;
+            height: 30px;
+            background-color: rgb(145, 66, 66);
+            color: rgb(245, 239, 239);
+            font-size: larger;
+            border: none;
+
+            border-radius: 2px;
+        }
+
+        .deleteButton:hover {
+            background-color: black;
+        }
+
+        .seperationDiv {
+            width: 100%;
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+
+        .editButton {
+            width: 80px;
+            height: 30px;
+            background-color: rgb(74, 129, 67);
+            color: white;
+            font-size: larger;
+            border: none;
+
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<!--Main Body-->
+
+<body>
+    <div class="mainContainer">
+        <header>
+            <h1>
+                TO-<span>DO App</span>
+            </h1>
+        </header><br><br>
+        <div class="container">
+
+            <div>
+                <input type="text" id="todoInput" placeholder="Enter To-Do Task">
+            </div>
+            <div>
+                <input type="date" id="todoDate">
+            </div>
+            <div>
+                <button id="todoAdd" onclick="addToDo()">
+                    Add
+                </button>
+            </div>
+
+        </div>
+        <div id="todoList">
+
+        </div>
+    </div>
+
+    <!--Script-->
+
+    <script>
+        const todoList = document.getElementById('todoList');
+        function addToDo() {
+            const todoInput = document.getElementById('todoInput');
+            const todoDate = document.getElementById('todoDate');
+            if ((todoInput.value && todoDate.value) !== "") {
+
+
+
+                const addTodoCreateElement = document.createElement('div');
+                const addInnerHTML = `<p id="task"> <span>Task : </span>${todoInput.value}</p>
+                <p id="taskDate"><span>Date to Complete :</span> ${todoDate.value}</p>
+                
+                <button class="editButton">Edit</button>
+        
+                <button class="deleteButton">Delete</button>
+                <div class="seperationDiv"></div>`;
+                addTodoCreateElement.innerHTML = addInnerHTML;
+
+                todoList.appendChild(addTodoCreateElement);
+                const deleteButton = addTodoCreateElement.querySelector('.deleteButton');
+                deleteButton.addEventListener('click', () => {
+                    todoList.removeChild(addTodoCreateElement)
+                });
+
+                const editButton = addTodoCreateElement.querySelector('.editButton');
+                editButton.addEventListener('click', () => {
+                    enableEdit(addTodoCreateElement, todoInput, todoDate);
+                });
+            }
+            else {
+                alert("Please enter task and date");
+            }
+            todoInput.value = "";
+            todoDate.value = "";
+        }
+
+        function enableEdit(todoElement, inputElement, dateElement) {
+            const taskText = todoElement.querySelector('#task');
+            const taskDateText = todoElement.querySelector('#taskDate');
+            const editButton = todoElement.querySelector('.editButton');
+            taskText.innerHTML = `<span>Task :</span> <input type="text" class="editTaskInput" >`;
+            taskDateText.innerHTML = `<span>Date to Complete :</span> <input type="date" class="editDateInput" >`;
+            editButton.innerText = 'Save';
+            editButton.removeEventListener('click', enableEdit);
+
+            const editTaskInput = document.querySelector('.editTaskInput');
+            const editDateInput = document.querySelector('.editDateInput')
+            editButton.addEventListener('click', () => {
+                taskText.innerHTML = `<span>Task :</span> ${editTaskInput.value}`;
+                taskDateText.innerHTML = `<span>Date to Complete :</span> ${editDateInput.value}`;
+                editButton.innerText = 'Edit';
+                // Restore the original click event for editing
+                editButton.removeEventListener('click', () => { });
+                editButton.addEventListener('click', () => {
+                    enableEdit(todoElement, inputElement, dateElement);
+                });
+            });
+        }
+
+
+    </script>
+</body>
+
+
+
+
+</html>
